@@ -10,9 +10,11 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.utkusarican.netflixcloneapplication.adapter.BannerMoviesViewPagerAdapter
 import com.utkusarican.netflixcloneapplication.adapter.MainRecyclerViewAdapter
 import com.utkusarican.netflixcloneapplication.databinding.ActivityMainBinding
 import com.utkusarican.netflixcloneapplication.model.AllCategory
+import com.utkusarican.netflixcloneapplication.model.BannerMovieModels
 import com.utkusarican.netflixcloneapplication.model.CategoryItemModel
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +35,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupAllCategory(){
+
+        val movieBannerList : MutableList<BannerMovieModels> = arrayListOf()
+        movieBannerList.add(BannerMovieModels(0,"WARRIOR NUN","Drama ● Superhero ● Teen",R.drawable.banner_movie1))
+        movieBannerList.add(BannerMovieModels(0,"THRILLER","Thriller ● Horror ",R.drawable.banner_movie2))
+        movieBannerList.add(BannerMovieModels(0,"THE WITCHER","Advanture ● Fantasy ● Drama",R.drawable.banner_movie3))
+        movieBannerList.add(BannerMovieModels(0,"IO LAST ON EARTH","Science Fiction ● Horror ● Action",R.drawable.movie1))
+        movieBannerList.add(BannerMovieModels(0,"DAREDEVIL","Crime ● Superhero ● Action",R.drawable.banner_movie5))
+
+        val bannerMovieViewPagerAdapter = BannerMoviesViewPagerAdapter(movieBannerList)
 
         val oONCategoryList : MutableList<CategoryItemModel> = arrayListOf()
         oONCategoryList.add(CategoryItemModel(0,R.drawable.movie1))
@@ -66,6 +77,7 @@ class MainActivity : AppCompatActivity() {
             homepageMovielistsRecyclerview.adapter = mainRecyclerViewAdapter
             homepageMovielistsRecyclerview.layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.VERTICAL,false)
             homepageMovielistsRecyclerview.setHasFixedSize(true)
+            bannerMoviePager.adapter = bannerMovieViewPagerAdapter
         }
         mainRecyclerViewAdapter.submitList(allCategoryList)
 

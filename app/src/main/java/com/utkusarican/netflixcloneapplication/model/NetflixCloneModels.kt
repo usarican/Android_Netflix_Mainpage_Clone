@@ -6,7 +6,7 @@ data class BannerMovieModels(
     val id : Int,
     val name : String,
     val gender : String,
-    val imageUrl : String
+    val imageUrl : Int
 )
 data class AllCategory(
     val category : String,
